@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Best Wish</title>
+</head>
+
+
+<body>
+    
+<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '619559151717303',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.0'
+          });
+            
+
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+});            
+        };
+      
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+         
+
+         function statusChangeCallback(response){
+             if(response.status === 'connected'){
+                 console.log('Logged in and authenticated');
+             } else {
+                 console.log('not authenticated');
+             }
+         }
+
+      </script>
+    
+    <nav ng-controller="AuthCtrl">
+        <button class="SignInFacebook">
+            <a href="#!/">Home</a>
+        </button>
+
+        <button class="SignInFacebook">
+            <a href="#!/sign-up">Sign up</a>
+        </button>
+        
+
+    </nav>
+
+    <div ng-view></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.6.9/angular-route.js"></script>
+<!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+    apiKey: "AIzaSyCgFZouJlDWVfSDp4j12RQBvN-6YWp6zqE",
+    authDomain: "skolanprojekt.firebaseapp.com",
+    databaseURL: "https://skolanprojekt.firebaseio.com",
+    projectId: "skolanprojekt",
+    storageBucket: "skolanprojekt.appspot.com",
+    messagingSenderId: "778217823819"
+  };
+  firebase.initializeApp(config)
+      </script>
+
+</body>
+
+</html>
